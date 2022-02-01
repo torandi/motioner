@@ -23,7 +23,7 @@ def pdf():
         pdffile = build_pdf(get_tex())
         return Response(pdffile.stream, mimetype='application/pdf')
     except LatexBuildError as e:
-        return Response(tex, mimetype='application/x-tex')
+        return "<pre>" + str(e) + "</pre>"
 
 @app.route('/motion.tex', methods=['POST'])
 def tex():
