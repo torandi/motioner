@@ -6,7 +6,6 @@
     <meta name="theme-color" content="#0097a7" />
     <title>Motionsmall</title>
     <script src="https://unpkg.com/vue"></script>
-    <link rel="stylesheet" href="https://aurora.datasektionen.se/" type="text/css" />
     <script type="text/javascript">
     window.methone_conf = {
         system_name: "motioner",
@@ -27,9 +26,6 @@
       <header>
         <div class="header-inner">
           <div class="row">
-            <div class="header-left col-md-2">
-              <a href="#" @click="submittex" class="primary-action">TeX</a>
-            </div>
             <div class="col-md-8">
               <h2>Motioner</h2>
             </div>
@@ -50,19 +46,19 @@
                 <option value="proposition">Proposition angående</option>
                 <option value="reply">Svar på motion angående</option>
               </select><br>
-              <input type="text" name="title" placeholder="webbaserade motionsmallar">
+              <input type="text" name="title" placeholder="ange vad din motion handlar om">
             </h1>
 
             <br>
 
             <div class="meeting">
-              <input type="text" name="meeting" placeholder="Glögg" class="name"><label for="meeting">-SM</label><br>
+              <input type="text" name="meeting" placeholder="Årstämma" class="name"><label for="meeting"></label><br>
               <input type="date" name="date" placeholder="2011-11-21" class="date">
             </div>
 
             <div>
               <h2>Bakgrund</h2>
-              <textarea @keyup="keyUpBackground($event)" name="background" id="background" v-model="background" placeholder="Folk är lata och tycker att det är jobbigt att skriva motioner i ren LaTeX."></textarea>
+              <textarea @keyup="keyUpBackground($event)" name="background" id="background" v-model="background" placeholder="Beskriv varför du anser att vi bör genomföra detta beslut."></textarea>
             </div>
 
             <div>
@@ -75,7 +71,7 @@
               <ul id="items">
                 <li v-for="item, idx in items">
                   <b>att</b>
-                  <textarea @keyup="keyUpAtt(idx, $event)" class="att" v-bind:name="item.content ? 'items[]' : 'trash'" v-model="item.content" placeholder="fräscha upp motionssystemet och göra det lättare att använda"></textarea>
+                  <textarea @keyup="keyUpAtt(idx, $event)" class="att" v-bind:name="item.content ? 'items[]' : 'trash'" v-model="item.content" placeholder='ange vad du önskar besluta som en \"att-sats\"'></textarea>
                 </li>
               </ul>
             </div>
@@ -84,7 +80,7 @@
               <h2>Undertecknat</h2>
               <ul id="authors">
                 <li v-for="author, idx in authors">
-                  <input @keyup="keyUpAuthor(idx, $event)" type="text" v-bind:name="author.name ? 'authors[]' : 'trash'" v-model="author.name" placeholder="Jonas Dahl">
+                  <input @keyup="keyUpAuthor(idx, $event)" type="text" v-bind:name="author.name ? 'authors[]' : 'trash'" v-model="author.name" placeholder="Ditt Namn">
                 </li>
               </ul>
             </div>
@@ -129,10 +125,6 @@
 
             localStorage.setItem('authors', JSON.stringify(this.authors))
           },
-          submittex: function() {
-            this.$refs.form.action = '/motion.tex'
-            this.$refs.form.submit()
-          },
           submitpdf: function() {
             this.$refs.form.action = '/motion.pdf'
             this.$refs.form.submit()
@@ -140,6 +132,5 @@
         }
       })
     </script>
-    <script type="text/javascript" src="//methone.datasektionen.se/bar.js"></script>
   </body>
 </html>
