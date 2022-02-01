@@ -35,7 +35,7 @@ def get_tex():
     if request.form['document_type'] == 'motion':
         i_or_we = 'vi' if len(request.form.getlist('authors[]')) > 1 else 'jag'
     else:
-        i_or_we = 'D-rektoratet'
+        i_or_we = 'Styrelsen'
 
     return template.render(
             i_or_we=i_or_we,

@@ -4,24 +4,22 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0097a7" />
+    <link rel="stylesheet" href="/static/style.general.css" type="text/css" />
+
     <title>Motionsmall</title>
     <script src="https://unpkg.com/vue"></script>
-    <script type="text/javascript">
-    window.methone_conf = {
-        system_name: "motioner",
-        color_scheme: "deep_purple",
-        links: [
-            { str: "Motion", href: "/motion" },
-            { str: "Proposition", href: "/proposition" },
-            { str: "Motionssvar", href: "/reply" },
-        ]
-    }
-    </script>
     <link rel="stylesheet" type="text/css" href="/static/font/cmun-serif.css" />
     <link rel="stylesheet" type="text/css" href="/static/style.css" />
   </head>
   <body>
-    <div id="methone-container-replace"></div>
+    <div id="topbar" class="deep-purple">
+      <div id="topbar-links" class="deep-purple">
+        <a href="/motion">MOTION</a>
+        <a href="/proposition">PROPOSITION</a>
+        <a href="/reply">MOTIONSSVAR</a>
+      </div>
+    </div>
+
     <div id="application" class="deep-purple">
       <header>
         <div class="header-inner">
@@ -46,14 +44,14 @@
                 <option value="proposition">Proposition angående</option>
                 <option value="reply">Svar på motion angående</option>
               </select><br>
-              <input type="text" name="title" placeholder="ange vad din motion handlar om">
+              <input type="text" name="title" placeholder="ämne för din motion">
             </h1>
 
             <br>
 
             <div class="meeting">
-              <input type="text" name="meeting" placeholder="Årstämma" class="name"><label for="meeting"></label><br>
-              <input type="date" name="date" placeholder="2011-11-21" class="date">
+              <input type="text" name="meeting" placeholder="Årstämma" class="name" value="Årstämma"></label><br>
+              <input type="date" name="date" placeholder="2011-11-21" class="date" title="Ange datumet för stämman som det handlar om">
             </div>
 
             <div>
@@ -71,7 +69,7 @@
               <ul id="items">
                 <li v-for="item, idx in items">
                   <b>att</b>
-                  <textarea @keyup="keyUpAtt(idx, $event)" class="att" v-bind:name="item.content ? 'items[]' : 'trash'" v-model="item.content" placeholder='ange vad du önskar besluta som en \"att-sats\"'></textarea>
+                  <textarea title="Ange varje del av beslutet som en att-sats. Varje att-sats ska kunna beslutas om oberoende av de andra." @keyup="keyUpAtt(idx, $event)" class="att" v-bind:name="item.content ? 'items[]' : 'trash'" v-model="item.content" placeholder='ange vad du önskar besluta som en "att-sats"'></textarea>
                 </li>
               </ul>
             </div>
@@ -80,7 +78,7 @@
               <h2>Undertecknat</h2>
               <ul id="authors">
                 <li v-for="author, idx in authors">
-                  <input @keyup="keyUpAuthor(idx, $event)" type="text" v-bind:name="author.name ? 'authors[]' : 'trash'" v-model="author.name" placeholder="Ditt Namn">
+                  <input title="Ange namnet på samtliga motionärer var för sig." @keyup="keyUpAuthor(idx, $event)" type="text" v-bind:name="author.name ? 'authors[]' : 'trash'" v-model="author.name" placeholder="Namn">
                 </li>
               </ul>
             </div>

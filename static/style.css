@@ -12,7 +12,7 @@
 	padding: 0;
 	text-indent: 30px;
 	min-height: 0px;
-	margin-top: -22px;
+	margin-top: -23px;
 	background: transparent;
 }
 #frame .page input {
@@ -33,6 +33,35 @@
 	padding: 0;
 	margin: 0;
 }
+
+#topbar {
+  	background: #7e57c2;
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 8px;
+	position: fixed;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	z-index: 900;
+	transition: top 0s ease 0s;
+}
+
+#topbar-links {
+	margin: 0px auto;
+	max-width: 1240px;
+	display: flex;
+	align-items: flex-end;
+}
+
+#topbar-links a {
+	color: #fff;
+	text-decoration: none;
+	display: flex;
+	-moz-box-align: center;
+	align-items: center;
+	height: 50px;
+	padding: 0px 10px;
+	white-space: nowrap;
+  }
 
 header {
 	position: fixed;
@@ -72,21 +101,20 @@ header {
 	color: #000;
 	border: none;
 }
-#frame .page .meeting label {
-	font-weight: normal !important;
-}
 #frame .page .meeting input.name {
-	text-align: right;
-	width: 70px;
+	text-align: center;
+	width: 200px;
 	margin-bottom: -20px;
 	margin-left: -20px;
+	font-size: 1.3em;
 }
 #frame .page .meeting input.date {
 	text-align: center;
-	width: 150px;
+	width: 200px;
 	padding: 0;
-	margin-right: -65px;
 	margin-top: -20px;
+	font-size: 1em;
+
 }
 
 
